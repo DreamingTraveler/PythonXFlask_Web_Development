@@ -1,0 +1,36 @@
+*{
+  font-family: Gabriola;
+}
+
+.navbar-brand{
+  color:white !important;
+  text-align: left;
+  margin-left: 50px;
+  font-size: 32px;
+}
+
+.navbar-nav{
+  margin-right: 50px;
+}
+
+.nav-item{
+  padding-right: 20px;
+  font-size: 20px;
+}
+
+.shopping-cart{
+  background-image: url("../images/shopping_cart.png");
+  background-size: 50px 50px;
+  width: 50px;
+  height: 50px;
+  cursor: pointer;
+}
+
+.oi-cart{
+  font-size: 2rem; 
+  color: white;
+}
+.oi-cart:hover{
+  transform: scale(1.2,1.2);
+  transition-duration: 0.8s;
+}
