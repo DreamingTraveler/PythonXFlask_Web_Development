@@ -51,3 +51,12 @@ body{
     font-size: 24px;
     letter-spacing: 2px;
 }
+
+/*---------pagination------------*/
+.pagination{
+    font-size: 30px;
+}
+.points{
+    font-size: 30px;
+    margin: 0 10px;
+}

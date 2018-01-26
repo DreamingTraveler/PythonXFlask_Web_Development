@@ -41,9 +41,6 @@
             <a class="nav-link">訂單記錄</a>
           </li>
           <li class="nav-item">
-              <a class="nav-link" href="{{ url_for('goods.GoodsView') }}">商品列表</a>
-            </li>
-          <li class="nav-item">
             <a class="nav-link" href="{{ url_for('membership.LogoutView') }}">登出</a>
           </li>
           {% else %}
@@ -51,6 +48,9 @@
             <a class="nav-link" href="{{ url_for('membership.LoginView') }}">登入</a>
           </li>
           {% endif %}
+          <li class="nav-item">
+            <a class="nav-link" href="{{ url_for('goods.GoodsView') }}">商品列表</a>
+          </li>
           <li class="nav-item">
             <a href="#">
               <span class="oi oi-cart"></span>

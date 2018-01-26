@@ -53,23 +53,21 @@ def create_testdata():
     goods_type.price = 682
     models.db.session.add(goods_type)
 
-    goods = models.Goods()
-    goods.name = 'GJDLJGLA'
-    goods.state = 'To sell'
-    goods.type = goods_type
-    goods.author = member
-    goods.description = '''ka[dsg ks[dkfm[aosdkr]papsk f]pok kapflklkalks [pk[
-        dgkds sd;lf';l d;s
-        [ a[lsdf'
-         sd; klsdk; lfkps;dlpfl, sp;l
-         sdf ;lkl;sdk ;lksd;lkf[pqle[prk '''
-    goods.image = '/static/images/cat4.jpg'
+    for i in range(1,730):
+        goods = models.Goods()
+        goods.name = 'GOODS_FOR_TEST '+ str(i)
+        goods.state = 'To sell'
+        goods.type = goods_type
+        goods.author = member
+        goods.description = '''ka[dsg ks[dkfm[aosdkr]papsk f]pok kapflklkalks [pk[
+            dgkds sd;lf';l d;s
+            [ a[lsdf'
+            sd; klsdk; lfkps;dlpfl, sp;l
+            sdf ;lkl;sdk ;lksd;lkf[pqle[prk '''
+        goods.image = '/static/images/cat4.jpg'
+        models.db.session.add(goods)
 
-    models.db.session.add(goods)
     models.db.session.commit()
-
-
-
 @app.route('/')
 def index():
     return render_template('base/index.html')
