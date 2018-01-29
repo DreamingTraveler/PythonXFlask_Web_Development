@@ -66,7 +66,7 @@ class RegisterView(MethodView):
 
         models.db.session.add(user)
         models.db.session.commit()
-        return 'Registration successful!'
+        return redirect(url_for('membership.ProfileView'))
 
 class ProfileView(MethodView):
     @login_required

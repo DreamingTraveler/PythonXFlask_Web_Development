@@ -60,3 +60,24 @@ body{
     font-size: 30px;
     margin: 0 10px;
 }
+
+/*---------comment--------------*/
+.page-header{
+    margin-top: 80px;
+}
+
+.comment{
+    margin-top: 10px;
+    border-bottom: 2px dotted #ccc;
+    border-radius: 5px;
+    background-color: #f3ca7833;
+}
+
+.comment-author{
+    font-weight: bold;
+    color: #804040;
+}
+
+#comment-area{
+    margin-top: 20px;
+}

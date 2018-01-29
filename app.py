@@ -77,6 +77,57 @@ def create_testdata():
             sd; klsdk; lfkps;dlpfl, sp;l
             sdf ;lkl;sdk ;lksd;lkf[pqle[prk '''
         models.db.session.add(goods)
+
+    order = models.Order()
+    order.amount = 881
+    order.purchaser = member
+    models.db.session.add(order)
+
+    order_item = models.OrderItem()
+    order_item.quantity = 1
+    order_item.goods = goods
+    order_item.order = order
+    models.db.session.add(order_item)
+
+    comment1 = models.Comment()
+    comment1.author = member
+    comment1.goods = goods
+    comment1.message = '?????????渣SA{DQ@ㄉ@``CSCf;ll;z;'
+    models.db.session.add(comment1)
+
+    comment2 = models.Comment()
+    comment2.author = member
+    comment2.goods = goods
+    comment2.message = '爛!!!!!!!!!afgbbxvxv豬ad45675O--i092I0U302909JPJR3'
+    models.db.session.add(comment2)
+
+    comment3 = models.Comment()
+    comment3.author = member
+    comment3.goods = goods
+    comment3.message = 'xafaxoooooofafos@肥豬鷹!XXXXXXXXXXXXXXXXXXXXX'
+    models.db.session.add(comment3)
+
+    rating2 = models.Rating()
+    rating2.author = member
+    rating2.for_order_item = order_item
+    rating2.score = 1
+    rating2.message = '爛!!!!!!!!!afasjfjKJEPKRJPO--i092I0U302909JPJR3'
+    models.db.session.add(rating2)
+
+    rating = models.Rating()
+    rating.author = member
+    rating.for_order_item = order_item
+    rating.score = 3
+    rating.message = 'sdogkpa!I@(_)_)UafF())I#){(RU)USJOJIJLKJlj ojroqi *&:((((('
+    models.db.session.add(rating)
+
+    rating2 = models.Rating()
+    rating2.author = member
+    rating2.for_order_item = order_item
+    rating2.score = 1
+    rating2.message = '爛!!!!!!!!!afasjfjKJEPKRJPO--i092I0U302909JPJR3'
+    models.db.session.add(rating2)
+
     models.db.session.commit()
 @app.route('/')
 def index():

@@ -34,11 +34,28 @@
       <div class="collapse navbar-collapse" id="navbarResponsive">
         <ul class="navbar-nav ml-auto">
           {% if current_user.is_authenticated %}
-          <li class="nav-item">
-            <a class="nav-link" href="{{ url_for('membership.ProfileView') }}">會員資料</a>
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+              消費者
+            </a>
+            <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+              <a class="dropdown-item" href="#">訂單記錄</a>
+              <a class="dropdown-item" href="#">購物車</a>
+              <a class="dropdown-item" href="#">已購買的商品</a>
+            </div>
+          </li>
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+              創作者
+            </a>
+            <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+              <a class="dropdown-item" href="{{ url_for('goods.PublishGoodsView') }}">刊登商品</a>
+              <a class="dropdown-item" href="#">待出售商品</a>
+              <a class="dropdown-item" href="#">已出售商品</a>
+            </div>
           </li>
           <li class="nav-item">
-            <a class="nav-link">訂單記錄</a>
+            <a class="nav-link" href="{{ url_for('membership.ProfileView') }}">會員資料</a>
           </li>
           <li class="nav-item">
             <a class="nav-link" href="{{ url_for('membership.LogoutView') }}">登出</a>

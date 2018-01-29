@@ -54,3 +54,53 @@ class GoodsType(db.Model):
     size = db.Column(db.String(5), nullable=False, unique=True)
     price = db.Column(db.Integer, nullable=False)
     state = db.Column(db.String(10), nullable=False)
+
+class Order(db.Model):
+    __tablename__ = 'Order'
+    id = db.Column(db.Integer, primary_key=True, autoincrement=True)
+    is_paid = db.Column(db.Boolean, nullable=False, default=False)
+    amount = db.Column(db.Integer, nullable=False)
+    time = db.Column(db.DateTime, nullable=False, default=datetime.now)
+    purchaser_id = db.Column(db.Integer, db.ForeignKey('Member.id'))
+    purchaser = db.relationship('Member', backref='orders')
+
+
+class OrderItem(db.Model):
+    __tablename__ = 'OrderItem'
+    id = db.Column(db.Integer, primary_key=True, autoincrement=True)
+    quantity = db.Column(db.Integer, nullable=False, default=1)
+    order_id = db.Column(db.Integer, db.ForeignKey('Order.id'))
+    order = db.relationship('Order', backref='items')
+    good_id = db.Column(db.Integer, db.ForeignKey('Goods.id'))
+    goods = db.relationship('Goods', backref='ref_orders')
+
+
+class Rating(db.Model):
+    __tablename__ = 'Rating'
+    id = db.Column(db.Integer, primary_key=True, autoincrement=True)
+    score = db.Column(db.Integer, nullable=False)
+    message = db.Column(db.String(128), nullable=False)
+    time = db.Column(db.DateTime, nullable=False, default=datetime.now)
+    for_order_item_id = db.Column(db.Integer, db.ForeignKey('OrderItem.id'))
+    for_order_item = db.relationship('OrderItem', uselist=False, backref=db.backref('rating', uselist=False))
+    author_id = db.Column(db.Integer, db.ForeignKey('Member.id'))
+    author = db.relationship('Member', backref='made_ratings')
+
+class Comment(db.Model):
+    __tablename__ = 'Comment'
+    id = db.Column(db.Integer, primary_key=True, autoincrement=True)
+    time = db.Column(db.DateTime, nullable=False, default=datetime.now)
+    message = db.Column(db.String(128), nullable=False)
+    goods_id = db.Column(db.Integer, db.ForeignKey('Goods.id'))
+    goods = db.relationship('Goods', backref='ref_goods')
+    author_id = db.Column(db.Integer, db.ForeignKey('Member.id'))
+    author = db.relationship('Member', backref='made_comment')
+
+class ShoppingCartItem(db.Model):
+    __tablename__ = 'ShoppingCartItem'
+    id = db.Column(db.Integer, primary_key=True, autoincrement=True)
+    quantity = db.Column(db.Integer, nullable=False, default=1)
+    memeber_id = db.Column(db.Integer, db.ForeignKey('Member.id'))
+    member = db.relationship('Member', backref=db.backref('shopping_cart', cascade='all,delete-orphan'), single_parent=True)
+    goods_id = db.Column(db.Integer, db.ForeignKey('Goods.id'))
+    goods = db.relationship('Goods', cascade_backrefs='delete')

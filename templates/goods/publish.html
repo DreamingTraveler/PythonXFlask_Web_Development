@@ -1,0 +1,69 @@
+{% extends "base/layout.html" %} 
+{% block title %}Creative T-Shirt Trading Platform{% endblock %} 
+{% block main%}
+<div class="container" style="margin-top: 5rem;">
+    <div class="row justify-content-md-center">
+        <div class="col-md-8 col-md-auto">
+            <div class="card">
+                <div class="card-body">
+                    <form method="POST">
+                        <h4 class="card-title">刊登商品</h4>
+                        <p class="card-text">
+                            <div class="form-group row">
+                                <label class="col-sm-2 col-form-label">
+                                    <span style="color: #C20202;">*</span> 商品名稱</label>
+                                <div class="col-sm-10">
+                                    <input type="text" name="username" class="form-control" maxlength="20" required />
+                                </div>
+                            </div>
+                            <div class="form-group row">
+                                <label class="col-sm-2 col-form-label">
+                                    <span style="color: #C20202;">*</span> 尺寸</label>
+                                <div class="col-sm-10 d-flex align-items-center">
+                                    <div class="form-check" style="margin-bottom: 0">
+                                        <label class="form-check-label" style="margin-right: 1rem;">
+                                            <input type="radio" name="sex" class="form-check-input" value="S"> S
+                                        </label>
+                                        <label class="form-check-label" style="margin-right: 1rem;">
+                                            <input type="radio" name="sex" class="form-check-input" value="M"> M
+                                        </label>
+                                        <label class="form-check-label" style="margin-right: 1rem;">
+                                            <input type="radio" name="sex" class="form-check-input" value="L"> L
+                                        </label>
+                                        <label class="form-check-label" style="margin-right: 1rem;">
+                                            <input type="radio" name="sex" class="form-check-input" value="XL"> XL
+                                        </label>
+                                        <label class="form-check-label" style="margin-right: 1rem;">
+                                            <input type="radio" name="sex" class="form-check-input" value="XXL"> XXL
+                                        </label>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <a href="javascript:void(0)" onclick="$('#pro-image').click()">Upload Image</a>
+                                <input type="file" id="pro-image" name="pro-image" style="display: none;" class="form-control" multiple>
+                            </div>
+                            <div class="preview-images-zone">
+                                
+                            </div>
+                            <div class="form-group row">
+                                <label class="col-sm-2 col-form-label">
+                                    <span style="color: #C20202;">*</span> 商品描述</label>
+                                <div class="col-sm-10">
+                                    <textarea class="form-control" name="comment" id="comment-area" rows="3"></textarea>
+                                </div>
+                            </div>
+                            <div class="text-center">
+                                <input type="hidden" name="token" value="{{ token }}">
+                                <button type="submit" class="btn btn-primary">註冊</button>
+                                <a href="{{ url_for('membership.LoginView') }}" class="btn btn-secondary">回到登入畫面</a>
+                            </div>
+                        </p>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+{% endblock %}

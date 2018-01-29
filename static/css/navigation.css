@@ -5,17 +5,13 @@
 .navbar-brand{
   color:white !important;
   text-align: left;
-  margin-left: 50px;
   font-size: 32px;
-}
-
-.navbar-nav{
-  margin-right: 50px;
 }
 
 .nav-item{
   padding-right: 20px;
   font-size: 20px;
+  cursor: pointer;
 }
 
 .shopping-cart{
