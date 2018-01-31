@@ -45,7 +45,6 @@ class Goods(db.Model):
     author_id = db.Column(db.Integer, db.ForeignKey('Member.id'))
     author = db.relationship('Member', backref='goods_list')
     description = db.Column(db.Text, nullable=False, default='')
-    image = db.Column(db.Text, nullable=False)
 
 
 class GoodsType(db.Model):
@@ -54,6 +53,13 @@ class GoodsType(db.Model):
     size = db.Column(db.String(5), nullable=False, unique=True)
     price = db.Column(db.Integer, nullable=False)
     state = db.Column(db.String(10), nullable=False)
+
+class GoodsImages(db.Model):
+    __tablename__ = 'GoodsImage'
+    id = db.Column(db.Integer, primary_key=True, autoincrement=True)
+    goods_id = db.Column(db.Integer, db.ForeignKey('Goods.id'))
+    goods = db.relationship('Goods', backref='goods_image')
+    image = db.Column(db.Text, nullable=False)
 
 class Order(db.Model):
     __tablename__ = 'Order'
@@ -92,7 +98,7 @@ class Comment(db.Model):
     time = db.Column(db.DateTime, nullable=False, default=datetime.now)
     message = db.Column(db.String(128), nullable=False)
     goods_id = db.Column(db.Integer, db.ForeignKey('Goods.id'))
-    goods = db.relationship('Goods', backref='ref_goods')
+    goods = db.relationship('Goods', backref='comment')
     author_id = db.Column(db.Integer, db.ForeignKey('Member.id'))
     author = db.relationship('Member', backref='made_comment')
 

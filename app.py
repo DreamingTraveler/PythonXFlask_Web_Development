@@ -61,15 +61,23 @@ def create_testdata():
 
     for i in range(1,730):
         goods = models.Goods()
+        goods_image1 = models.GoodsImages()
+        goods_image1.goods = goods
         goods.state = 'To sell'
         if i % 2 == 0:
+            goods_image2 = models.GoodsImages()
+            goods_image2.goods = goods
             goods.name = 'KITTEN 曉貓'+ str(i)
             goods.type = goods_type
-            goods.image = '/static/images/cat4.jpg'
+            goods_image1.image = '/static/images/cat4.jpg'
+            models.db.session.add(goods_image1)
+            goods_image2.image = '/static/images/cat2.jpg'
+            models.db.session.add(goods_image2)
         else:
             goods.name = 'BIRD_AND_CAT 鳥&貓 '+ str(i)
             goods.type = goods_type_m
-            goods.image = '/static/images/cat3.jpg'
+            goods_image1.image = '/static/images/cat3.jpg'
+            models.db.session.add(goods_image1)
         goods.author = member
         goods.description = '''ka[dsg ks[dkfm[aosdkr]papsk f]pok kapflklkalks [pk[
             dgkds sd;lf';l d;s

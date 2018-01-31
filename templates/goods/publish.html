@@ -6,14 +6,14 @@
         <div class="col-md-8 col-md-auto">
             <div class="card">
                 <div class="card-body">
-                    <form method="POST">
+                    <form method="POST" enctype="multipart/form-data">
                         <h4 class="card-title">刊登商品</h4>
                         <p class="card-text">
                             <div class="form-group row">
                                 <label class="col-sm-2 col-form-label">
                                     <span style="color: #C20202;">*</span> 商品名稱</label>
                                 <div class="col-sm-10">
-                                    <input type="text" name="username" class="form-control" maxlength="20" required />
+                                    <input type="text" name="goods-name" class="form-control" maxlength="20" required />
                                 </div>
                             </div>
                             <div class="form-group row">
@@ -22,41 +22,43 @@
                                 <div class="col-sm-10 d-flex align-items-center">
                                     <div class="form-check" style="margin-bottom: 0">
                                         <label class="form-check-label" style="margin-right: 1rem;">
-                                            <input type="radio" name="sex" class="form-check-input" value="S"> S
+                                            <input type="radio" name="size" class="form-check-input" value="S"> S
                                         </label>
                                         <label class="form-check-label" style="margin-right: 1rem;">
-                                            <input type="radio" name="sex" class="form-check-input" value="M"> M
+                                            <input type="radio" name="size" class="form-check-input" value="M"> M
                                         </label>
                                         <label class="form-check-label" style="margin-right: 1rem;">
-                                            <input type="radio" name="sex" class="form-check-input" value="L"> L
+                                            <input type="radio" name="size" class="form-check-input" value="L"> L
                                         </label>
                                         <label class="form-check-label" style="margin-right: 1rem;">
-                                            <input type="radio" name="sex" class="form-check-input" value="XL"> XL
+                                            <input type="radio" name="size" class="form-check-input" value="XL"> XL
                                         </label>
                                         <label class="form-check-label" style="margin-right: 1rem;">
-                                            <input type="radio" name="sex" class="form-check-input" value="XXL"> XXL
+                                            <input type="radio" name="size" class="form-check-input" value="XXL"> XXL
                                         </label>
                                     </div>
                                 </div>
                             </div>
-                            <div class="form-group">
+                            <div class="form-group row">
+                                <label class="col-sm-2 col-form-label">
+                                    <span style="color: #C20202;">*</span> 商品圖片</label>
                                 <a href="javascript:void(0)" onclick="$('#pro-image').click()">Upload Image</a>
-                                <input type="file" id="pro-image" name="pro-image" style="display: none;" class="form-control" multiple>
+                                <input type="file" id="pro-image" name="images" style="display: none;" class="form-control" multiple>
+                                <div class="preview-images-zone">
+                                    <div class="image-zone"></div>
+                                </div>
                             </div>
-                            <div class="preview-images-zone">
-                                
-                            </div>
+                            
                             <div class="form-group row">
                                 <label class="col-sm-2 col-form-label">
                                     <span style="color: #C20202;">*</span> 商品描述</label>
                                 <div class="col-sm-10">
-                                    <textarea class="form-control" name="comment" id="comment-area" rows="3"></textarea>
+                                    <textarea class="form-control" name="description" id="comment-area" rows="3"></textarea>
                                 </div>
                             </div>
                             <div class="text-center">
                                 <input type="hidden" name="token" value="{{ token }}">
-                                <button type="submit" class="btn btn-primary">註冊</button>
-                                <a href="{{ url_for('membership.LoginView') }}" class="btn btn-secondary">回到登入畫面</a>
+                                <button type="submit" class="btn btn-primary">刊登</button>
                             </div>
                         </p>
                     </form>
@@ -66,4 +68,5 @@
     </div>
 </div>
 
+<script src="{{ url_for('static', filename='js/upload_image.js') }}"></script>
 {% endblock %}

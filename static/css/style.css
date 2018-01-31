@@ -81,3 +81,12 @@ body{
 #comment-area{
     margin-top: 20px;
 }
+
+/*----------Image Zone---------*/
+.preview-images-zone > .image-zone > img{
+    width: 50%;
+}
+
+.image-zone:hover{
+    cursor: move;
+}
